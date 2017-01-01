@@ -12,6 +12,7 @@
 		516C65AB1E19667000547A9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65A91E19667000547A9B /* LaunchScreen.storyboard */; };
 		516C65B31E196D0800547A9B /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65B21E196D0800547A9B /* Start.storyboard */; };
 		516C65B51E196E4B00547A9B /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65B41E196E4B00547A9B /* SignInViewController.swift */; };
+		516C65B71E1981C100547A9B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65B61E1981C000547A9B /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		516C65AC1E19667000547A9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		516C65B21E196D0800547A9B /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Start.storyboard; path = View/Start.storyboard; sourceTree = "<group>"; };
 		516C65B41E196E4B00547A9B /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controller/SignInViewController.swift; sourceTree = "<group>"; };
+		516C65B61E1981C000547A9B /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controller/SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				516C65A01E19667000547A9B /* AppDelegate.swift */,
 				516C65B21E196D0800547A9B /* Start.storyboard */,
 				516C65B41E196E4B00547A9B /* SignInViewController.swift */,
+				516C65B61E1981C000547A9B /* SignUpViewController.swift */,
 				516C65A71E19667000547A9B /* Assets.xcassets */,
 				516C65A91E19667000547A9B /* LaunchScreen.storyboard */,
 				516C65AC1E19667000547A9B /* Info.plist */,
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516C65B71E1981C100547A9B /* SignUpViewController.swift in Sources */,
 				516C65B51E196E4B00547A9B /* SignInViewController.swift in Sources */,
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
 			);
