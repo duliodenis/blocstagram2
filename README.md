@@ -1,7 +1,7 @@
 # Blocstagram 2
 A Swift 3 / iOS 10 Instagram Clone for photo sharing with a Firebase backend.
 
-![](art/screenshot/blocstagram02.gif?raw=true)
+![](art/screenshot/blocstagram03.gif?raw=true)
 
 ### Contributing
 See [CONTRIBUTING](CONTRIBUTING.md).
