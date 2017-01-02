@@ -19,6 +19,11 @@
 		516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65BE1E19BF4F00547A9B /* ActivityViewController.swift */; };
 		516C65C11E19BF9800547A9B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65C01E19BF9800547A9B /* ProfileViewController.swift */; };
 		516C65C31E1ACA3B00547A9B /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65C21E1ACA3B00547A9B /* TabBar.storyboard */; };
+		516C65C51E1AD6BF00547A9B /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65C41E1AD6BF00547A9B /* Home.storyboard */; };
+		516C65C71E1AD73400547A9B /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65C61E1AD73400547A9B /* Discover.storyboard */; };
+		516C65C91E1AD79200547A9B /* Camera.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65C81E1AD79200547A9B /* Camera.storyboard */; };
+		516C65CB1E1AD80000547A9B /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65CA1E1AD80000547A9B /* Activity.storyboard */; };
+		516C65CD1E1AD86500547A9B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65CC1E1AD86500547A9B /* Profile.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +41,11 @@
 		516C65BE1E19BF4F00547A9B /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controller/ActivityViewController.swift; sourceTree = "<group>"; };
 		516C65C01E19BF9800547A9B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controller/ProfileViewController.swift; sourceTree = "<group>"; };
 		516C65C21E1ACA3B00547A9B /* TabBar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TabBar.storyboard; path = View/TabBar.storyboard; sourceTree = "<group>"; };
+		516C65C41E1AD6BF00547A9B /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Home.storyboard; path = View/Home.storyboard; sourceTree = "<group>"; };
+		516C65C61E1AD73400547A9B /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Discover.storyboard; path = View/Discover.storyboard; sourceTree = "<group>"; };
+		516C65C81E1AD79200547A9B /* Camera.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Camera.storyboard; path = View/Camera.storyboard; sourceTree = "<group>"; };
+		516C65CA1E1AD80000547A9B /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Activity.storyboard; path = View/Activity.storyboard; sourceTree = "<group>"; };
+		516C65CC1E1AD86500547A9B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = View/Profile.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,11 @@
 				516C65A01E19667000547A9B /* AppDelegate.swift */,
 				516C65B21E196D0800547A9B /* Start.storyboard */,
 				516C65C21E1ACA3B00547A9B /* TabBar.storyboard */,
+				516C65C41E1AD6BF00547A9B /* Home.storyboard */,
+				516C65C61E1AD73400547A9B /* Discover.storyboard */,
+				516C65C81E1AD79200547A9B /* Camera.storyboard */,
+				516C65CA1E1AD80000547A9B /* Activity.storyboard */,
+				516C65CC1E1AD86500547A9B /* Profile.storyboard */,
 				516C65B41E196E4B00547A9B /* SignInViewController.swift */,
 				516C65B61E1981C000547A9B /* SignUpViewController.swift */,
 				516C65B81E19BE7000547A9B /* HomeViewController.swift */,
@@ -145,9 +160,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				516C65C31E1ACA3B00547A9B /* TabBar.storyboard in Resources */,
+				516C65C91E1AD79200547A9B /* Camera.storyboard in Resources */,
+				516C65C51E1AD6BF00547A9B /* Home.storyboard in Resources */,
 				516C65AB1E19667000547A9B /* LaunchScreen.storyboard in Resources */,
 				516C65A81E19667000547A9B /* Assets.xcassets in Resources */,
 				516C65B31E196D0800547A9B /* Start.storyboard in Resources */,
+				516C65CD1E1AD86500547A9B /* Profile.storyboard in Resources */,
+				516C65C71E1AD73400547A9B /* Discover.storyboard in Resources */,
+				516C65CB1E1AD80000547A9B /* Activity.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
