@@ -91,6 +91,11 @@
                             <constraint firstItem="EQu-o7-iHB" firstAttribute="top" secondItem="Gnc-f6-z0d" secondAttribute="bottom" constant="38" id="g9R-Cu-jxp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="SAV-Nt-TEP" id="Hrt-22-46h"/>
+                        <outlet property="passwordTextField" destination="Kd2-66-Tj3" id="nfA-nu-3Jl"/>
+                        <outlet property="signInButton" destination="IlT-dE-ljp" id="fig-aE-HSe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HK-Ng-qfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -206,6 +211,6 @@
         <image name="profile" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dT1-LZ-SwV"/>
+        <segue reference="KAz-tb-nFg"/>
     </inferredMetricsTieBreakers>
 </document>
