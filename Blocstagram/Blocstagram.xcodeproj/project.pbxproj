@@ -79,6 +79,17 @@
 			isa = PBXGroup;
 			children = (
 				516C65A01E19667000547A9B /* AppDelegate.swift */,
+				51D91FE51E1D76DA00D02551 /* Views */,
+				51D91FE61E1D76E600D02551 /* Controllers */,
+				516C65A71E19667000547A9B /* Assets.xcassets */,
+				516C65AC1E19667000547A9B /* Info.plist */,
+			);
+			path = Blocstagram;
+			sourceTree = "<group>";
+		};
+		51D91FE51E1D76DA00D02551 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				516C65B21E196D0800547A9B /* Start.storyboard */,
 				516C65C21E1ACA3B00547A9B /* TabBar.storyboard */,
 				516C65C41E1AD6BF00547A9B /* Home.storyboard */,
@@ -86,6 +97,14 @@
 				516C65C81E1AD79200547A9B /* Camera.storyboard */,
 				516C65CA1E1AD80000547A9B /* Activity.storyboard */,
 				516C65CC1E1AD86500547A9B /* Profile.storyboard */,
+				516C65A91E19667000547A9B /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		51D91FE61E1D76E600D02551 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
 				516C65B41E196E4B00547A9B /* SignInViewController.swift */,
 				516C65B61E1981C000547A9B /* SignUpViewController.swift */,
 				516C65B81E19BE7000547A9B /* HomeViewController.swift */,
@@ -93,11 +112,8 @@
 				516C65BC1E19BEF500547A9B /* CameraViewController.swift */,
 				516C65BE1E19BF4F00547A9B /* ActivityViewController.swift */,
 				516C65C01E19BF9800547A9B /* ProfileViewController.swift */,
-				516C65A71E19667000547A9B /* Assets.xcassets */,
-				516C65A91E19667000547A9B /* LaunchScreen.storyboard */,
-				516C65AC1E19667000547A9B /* Info.plist */,
 			);
-			path = Blocstagram;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

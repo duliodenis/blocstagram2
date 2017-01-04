@@ -192,6 +192,12 @@
                             <constraint firstAttribute="trailing" secondItem="zuR-6e-gNT" secondAttribute="trailing" id="v1o-AY-qTC"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="tGY-Zt-ndy" id="SZI-wo-uS3"/>
+                        <outlet property="passwordTextField" destination="WFg-L4-0jz" id="cNy-jN-mxP"/>
+                        <outlet property="signupButton" destination="Qr2-Cc-SuH" id="dkX-p4-pDz"/>
+                        <outlet property="usernameTextField" destination="puA-88-zD6" id="ceZ-Kf-Baw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPn-Yb-hs1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -211,6 +217,6 @@
         <image name="profile" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KAz-tb-nFg"/>
+        <segue reference="dT1-LZ-SwV"/>
     </inferredMetricsTieBreakers>
 </document>
