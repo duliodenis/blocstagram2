@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class SignUpViewController: UIViewController {
 
@@ -66,6 +68,20 @@ class SignUpViewController: UIViewController {
         passwordTextField.clipsToBounds = true
         
         signupButton.layer.cornerRadius = 5
+    }
+    
+    
+    // MARK: - Sign Up User Method
+    
+    @IBAction func signUp(_ sender: Any) {
+        // create a Firebase user
+        FIRAuth.auth()?.createUser(withEmail: "x@y.com", password: "qwerty", completion: { (user:FIRUser?, error: Error?) in
+            if error != nil {
+                print("Create User Error: \(error?.localizedDescription)")
+            }
+            print(user)
+            
+        })
     }
     
 }
