@@ -1,0 +1,6 @@
+framework module Pods_Blocstagram {
+  umbrella header "Pods-Blocstagram-umbrella.h"
+
+  export *
+  module * { export * }
+}
