@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 
 class SignUpViewController: UIViewController {
@@ -74,12 +75,34 @@ class SignUpViewController: UIViewController {
     // MARK: - Sign Up User Method
     
     @IBAction func signUp(_ sender: Any) {
+        // ensure username, email and password are all not nil
+        if usernameTextField.text == "" {
+            // provide a specific alert
+            return
+        }
+        
+        if emailTextField.text == "" {
+            // provide a specific alert
+            return
+        }
+        
+        if passwordTextField.text == "" {
+            // provide a specific alert
+            return
+        }
+        
         // create a Firebase user
-        FIRAuth.auth()?.createUser(withEmail: "x@y.com", password: "qwerty", completion: { (user:FIRUser?, error: Error?) in
+        FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user:FIRUser?, error: Error?) in
             if error != nil {
-                print("Create User Error: \(error?.localizedDescription)")
+                print("Create User Error: \(error!.localizedDescription)")
             }
-            print(user)
+            
+            // create the new user in the user node
+            let ref = FIRDatabase.database().reference()
+            let userReference = ref.child("users")
+            let uid = user?.uid
+            let newUserReference = userReference.child(uid!)
+            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!])
             
         })
     }

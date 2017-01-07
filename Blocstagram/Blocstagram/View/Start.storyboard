@@ -174,7 +174,6 @@
                                         </state>
                                         <connections>
                                             <action selector="signUp:" destination="LMg-wW-noF" eventType="touchUpInside" id="PVg-0D-5fL"/>
-                                            <segue destination="mWa-AF-EN0" kind="presentation" id="dT1-LZ-SwV"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -217,7 +216,4 @@
         <image name="logo" width="843" height="64"/>
         <image name="profile" width="512" height="512"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="dT1-LZ-SwV"/>
-    </inferredMetricsTieBreakers>
 </document>

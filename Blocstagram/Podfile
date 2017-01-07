@@ -8,5 +8,6 @@ target 'Blocstagram' do
   # Pods for Blocstagram
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
 end
