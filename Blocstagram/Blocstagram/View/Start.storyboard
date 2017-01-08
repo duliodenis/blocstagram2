@@ -195,6 +195,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="tGY-Zt-ndy" id="SZI-wo-uS3"/>
                         <outlet property="passwordTextField" destination="WFg-L4-0jz" id="cNy-jN-mxP"/>
+                        <outlet property="profileImageView" destination="dkY-qo-6mL" id="gwV-zI-GK2"/>
                         <outlet property="signupButton" destination="Qr2-Cc-SuH" id="dkX-p4-pDz"/>
                         <outlet property="usernameTextField" destination="puA-88-zD6" id="ceZ-Kf-Baw"/>
                     </connections>

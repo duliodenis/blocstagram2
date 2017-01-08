@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 
 class SignUpViewController: UIViewController {
@@ -17,7 +18,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
+    @IBOutlet weak var profileImageView: UIImageView!
     
+    var selectedProfilePhoto: UIImage?
     
     @IBAction func dismissOnTap(_ sender: Any) {
         dismiss(animated: true)
@@ -69,6 +72,19 @@ class SignUpViewController: UIViewController {
         passwordTextField.clipsToBounds = true
         
         signupButton.layer.cornerRadius = 5
+        
+        // add a tap gesture to the profile image for users to pick their avatar
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageView))
+        profileImageView.addGestureRecognizer(tapGesture)
+        profileImageView.isUserInteractionEnabled = true
+    }
+    
+    
+    // MARK: - Handle the User Profile Picking
+    func handleProfileImageView() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true)
     }
     
     
@@ -97,14 +113,49 @@ class SignUpViewController: UIViewController {
                 print("Create User Error: \(error!.localizedDescription)")
             }
             
-            // create the new user in the user node
-            let ref = FIRDatabase.database().reference()
-            let userReference = ref.child("users")
             let uid = user?.uid
-            let newUserReference = userReference.child(uid!)
-            newUserReference.setValue(["username": self.usernameTextField.text!, "email": self.emailTextField.text!])
             
+            // get a reference to our file store
+            let storeRef = FIRStorage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
+            
+            // convert selected image to JPEG Data format to push to file store
+            if let profileImage = self.selectedProfilePhoto, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                storeRef.put(imageData, metadata: nil, completion: { (metaData, error) in
+                    if error != nil {
+                        print("Profile Image Error: \(error?.localizedDescription)")
+                        return
+                    }
+                    
+                    // if there's no error
+                    // get the URL of the profile image in the file store
+                    let profileImageURL = metaData?.downloadURL()?.absoluteString
+                    
+                    // create the new user in the user node and store username, email, and profile image URL
+                    let ref = FIRDatabase.database().reference()
+                    let userReference = ref.child("users")
+                    let newUserReference = userReference.child(uid!)
+                    newUserReference.setValue(["username": self.usernameTextField.text!,
+                                               "email": self.emailTextField.text!,
+                                               "profileImageURL": profileImageURL])
+                })
+            }
         })
+    }
+    
+}
+
+
+// MARK: - ImagePicker Delegate Methods
+
+extension SignUpViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            profileImageView.image = image
+            selectedProfilePhoto = image
+        }
+        
+        dismiss(animated: true)
     }
     
 }
