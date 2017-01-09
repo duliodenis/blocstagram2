@@ -176,6 +176,9 @@ class SignUpViewController: UIViewController {
         newUserReference.setValue(["username": username,
                                    "email": email,
                                    "profileImageURL": profileImageURL])
+        
+        // segue to the Tab Bar Controller
+        self.performSegue(withIdentifier: "signUpToTabBar", sender: nil)
     }
     
 }

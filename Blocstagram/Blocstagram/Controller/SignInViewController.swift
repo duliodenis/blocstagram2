@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class SignInViewController: UIViewController {
 
@@ -46,6 +48,62 @@ class SignInViewController: UIViewController {
         passwordTextField.clipsToBounds = true
         
         signInButton.layer.cornerRadius = 5
+        
+        // set handlers to text field objects
+        handleTextField()
+        
+        // initially disable button
+        disableButton()
     }
     
+    
+    // MARK: - Handle the Text Fields
+    
+    func handleTextField() {
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    
+    func textFieldDidChange() {
+        // guard against username, email and password all not being empty
+        guard
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+            else {
+                // disable SignUp button if ANY are not empty
+                disableButton()
+                return
+        }
+        // enable SignUp button if they are ALL not empty
+        enableButton()
+    }
+    
+    
+    func disableButton() {
+        signInButton.isEnabled = false
+        signInButton.alpha = 0.2
+    }
+    
+    
+    func enableButton() {
+        signInButton.isEnabled = true
+        signInButton.alpha = 1.0
+    }
+    
+    
+    // MARK: - Sign In User Method
+    
+    @IBAction func signIn(_ sender: Any) {
+        // Use Firebase Authentication with email and password
+        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
+            if error != nil {
+                print("Authentication Error: \(error!.localizedDescription)")
+                return
+            }
+            
+            // segue to the Tab Bar Controller
+            self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        })
+    }
 }

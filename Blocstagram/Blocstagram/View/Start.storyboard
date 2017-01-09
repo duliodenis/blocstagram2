@@ -12,7 +12,7 @@
         <!--Sign In View Controller-->
         <scene sceneID="cJm-nQ-4sk">
             <objects>
-                <viewController id="xrV-8g-f3u" customClass="SignInViewController" customModule="Blocstagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="xrV-8g-f3u" customClass="SignInViewController" customModule="Blocstagram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M0Z-xJ-duR"/>
                         <viewControllerLayoutGuide type="bottom" id="ntq-0m-HCA"/>
@@ -53,7 +53,7 @@
                                             <color key="titleColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="0.5" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="mWa-AF-EN0" kind="presentation" id="KAz-tb-nFg"/>
+                                            <action selector="signIn:" destination="xrV-8g-f3u" eventType="touchUpInside" id="MdP-CA-zTz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -95,6 +95,7 @@
                         <outlet property="emailTextField" destination="SAV-Nt-TEP" id="Hrt-22-46h"/>
                         <outlet property="passwordTextField" destination="Kd2-66-Tj3" id="nfA-nu-3Jl"/>
                         <outlet property="signInButton" destination="IlT-dE-ljp" id="fig-aE-HSe"/>
+                        <segue destination="mWa-AF-EN0" kind="presentation" identifier="signInToTabBar" id="2ch-lk-QE7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HK-Ng-qfK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,6 +199,7 @@
                         <outlet property="profileImageView" destination="dkY-qo-6mL" id="gwV-zI-GK2"/>
                         <outlet property="signupButton" destination="Qr2-Cc-SuH" id="dkX-p4-pDz"/>
                         <outlet property="usernameTextField" destination="puA-88-zD6" id="ceZ-Kf-Baw"/>
+                        <segue destination="mWa-AF-EN0" kind="presentation" identifier="signUpToTabBar" id="0O9-zG-N6n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPn-Yb-hs1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,11 +212,14 @@
                 <viewControllerPlaceholder storyboardName="TabBar" referencedIdentifier="TabBarID" id="mWa-AF-EN0" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jD0-EY-fXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="103"/>
+            <point key="canvasLocation" x="717" y="102"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo" width="843" height="64"/>
         <image name="profile" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="2ch-lk-QE7"/>
+    </inferredMetricsTieBreakers>
 </document>
