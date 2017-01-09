@@ -77,6 +77,12 @@ class SignUpViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageView))
         profileImageView.addGestureRecognizer(tapGesture)
         profileImageView.isUserInteractionEnabled = true
+        
+        // set handlers to text field objects
+        handleTextField()
+        
+        // initially disable button
+        disableButton()
     }
     
     
@@ -88,25 +94,45 @@ class SignUpViewController: UIViewController {
     }
     
     
+    // MARK: - Handle the Text Fields
+    func handleTextField() {
+        usernameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    }
+    
+    
+    func textFieldDidChange() {
+        // guard against username, email and password all not being empty
+        guard
+        let username = usernameTextField.text, !username.isEmpty,
+        let email = emailTextField.text, !email.isEmpty,
+        let password = passwordTextField.text, !password.isEmpty
+        else {
+            // disable SignUp button if ANY are not empty
+            disableButton()
+            return
+        }
+        // enable SignUp button if they are ALL not empty
+        enableButton()
+    }
+    
+    
+    func disableButton() {
+        signupButton.isEnabled = false
+        signupButton.alpha = 0.2
+    }
+    
+    
+    func enableButton() {
+        signupButton.isEnabled = true
+        signupButton.alpha = 1.0
+    }
+    
+    
     // MARK: - Sign Up User Method
     
-    @IBAction func signUp(_ sender: Any) {
-        // ensure username, email and password are all not nil
-        if usernameTextField.text == "" {
-            // provide a specific alert
-            return
-        }
-        
-        if emailTextField.text == "" {
-            // provide a specific alert
-            return
-        }
-        
-        if passwordTextField.text == "" {
-            // provide a specific alert
-            return
-        }
-        
+    @IBAction func signUp(_ sender: Any) {        
         // create a Firebase user
         FIRAuth.auth()?.createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user:FIRUser?, error: Error?) in
             if error != nil {
@@ -115,31 +141,41 @@ class SignUpViewController: UIViewController {
             
             let uid = user?.uid
             
-            // get a reference to our file store
-            let storeRef = FIRStorage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
-            
             // convert selected image to JPEG Data format to push to file store
             if let profileImage = self.selectedProfilePhoto, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                // get a reference to our file store
+                let storeRef = FIRStorage.storage().reference(forURL: Constants.fileStoreURL).child("profile_image").child(uid!)
+                
                 storeRef.put(imageData, metadata: nil, completion: { (metaData, error) in
                     if error != nil {
                         print("Profile Image Error: \(error?.localizedDescription)")
                         return
                     }
-                    
                     // if there's no error
                     // get the URL of the profile image in the file store
                     let profileImageURL = metaData?.downloadURL()?.absoluteString
                     
-                    // create the new user in the user node and store username, email, and profile image URL
-                    let ref = FIRDatabase.database().reference()
-                    let userReference = ref.child("users")
-                    let newUserReference = userReference.child(uid!)
-                    newUserReference.setValue(["username": self.usernameTextField.text!,
-                                               "email": self.emailTextField.text!,
-                                               "profileImageURL": profileImageURL])
+                    // set the user information with the profile image URL
+                    self.setUserInformation(profileImageURL: profileImageURL!, username: self.usernameTextField.text!, email: self.emailTextField.text!, uid: uid!)
                 })
             }
+            
+            // set the user info without a profile image URL
+            self.setUserInformation(profileImageURL: "", username: self.usernameTextField.text!, email: self.emailTextField.text!, uid: uid!)
         })
+    }
+    
+    
+    // MARK: - Firebase Saving Methods
+    
+    func setUserInformation(profileImageURL: String, username: String, email: String, uid: String) {
+        // create the new user in the user node and store username, email, and profile image URL
+        let ref = FIRDatabase.database().reference()
+        let userReference = ref.child("users")
+        let newUserReference = userReference.child(uid)
+        newUserReference.setValue(["username": username,
+                                   "email": email,
+                                   "profileImageURL": profileImageURL])
     }
     
 }
