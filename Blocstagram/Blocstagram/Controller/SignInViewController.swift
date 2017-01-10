@@ -17,6 +17,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let clouds = UIColor(red: 236/255, green: 240/255, blue: 241/255, alpha: 1)
@@ -56,6 +58,18 @@ class SignInViewController: UIViewController {
         disableButton()
     }
     
+    
+    // Automatically Log Current User In
+    // if there is a current user segue to the tab bar controller in View Did Appear
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if FIRAuth.auth()?.currentUser != nil {
+            // segue to the Tab Bar Controller
+            self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        }
+    }
     
     // MARK: - Handle the Text Fields
     
