@@ -30,7 +30,7 @@ class AuthService {
         // create a Firebase user
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user:FIRUser?, error: Error?) in
             if error != nil {
-                print("Create User Error: \(error!.localizedDescription)")
+                onError("Create User Error: \(error!.localizedDescription)")
             }
             
             let uid = user?.uid
@@ -48,18 +48,16 @@ class AuthService {
                 let profileImageURL = metaData?.downloadURL()?.absoluteString
                 
                 // set the user information with the profile image URL
-                self.setUserInformation(profileImageURL: profileImageURL!, username: username, email: email, uid: uid!)
+                self.setUserInformation(profileImageURL: profileImageURL!, username: username, email: email, uid: uid!, onSuccess: onSuccess)
             })
             
-            // set the user info without a profile image URL
-            self.setUserInformation(profileImageURL: "", username: username, email: email, uid: uid!)
         })
     }
     
     
     // MARK: - Firebase Saving Methods
     
-    static func setUserInformation(profileImageURL: String, username: String, email: String, uid: String) {
+    static func setUserInformation(profileImageURL: String, username: String, email: String, uid: String, onSuccess: @escaping () -> Void) {
         // create the new user in the user node and store username, email, and profile image URL
         let ref = FIRDatabase.database().reference()
         let userReference = ref.child("users")
@@ -67,9 +65,7 @@ class AuthService {
         newUserReference.setValue(["username": username,
                                    "email": email,
                                    "profileImageURL": profileImageURL])
-        
-        
+        onSuccess()
     }
-
     
 }

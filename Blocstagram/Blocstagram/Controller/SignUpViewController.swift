@@ -13,7 +13,7 @@ import FirebaseStorage
 
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -105,13 +105,13 @@ class SignUpViewController: UIViewController {
     func textFieldDidChange() {
         // guard against username, email and password all not being empty
         guard
-        let username = usernameTextField.text, !username.isEmpty,
-        let email = emailTextField.text, !email.isEmpty,
-        let password = passwordTextField.text, !password.isEmpty
-        else {
-            // disable SignUp button if ANY are not empty
-            disableButton()
-            return
+            let username = usernameTextField.text, !username.isEmpty,
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+            else {
+                // disable SignUp button if ANY are not empty
+                disableButton()
+                return
         }
         // enable SignUp button if they are ALL not empty
         enableButton()
@@ -135,30 +135,15 @@ class SignUpViewController: UIViewController {
     @IBAction func signUp(_ sender: Any) {
         // convert selected image to JPEG Data format to push to file store
         if let profileImage = self.selectedProfilePhoto, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
-            AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: imageData, onSuccess: { 
+            AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: imageData, onSuccess: {
                 // segue to the Tab Bar Controller
                 self.performSegue(withIdentifier: "signUpToTabBar", sender: nil)
             }, onError: { (errorString) in
                 print(errorString!)
             })
+        } else {
+            print("Profile Image can not be empty.")
         }
-        
-    }
-    
-    
-    // MARK: - Firebase Saving Methods
-    
-    func setUserInformation(profileImageURL: String, username: String, email: String, uid: String) {
-        // create the new user in the user node and store username, email, and profile image URL
-        let ref = FIRDatabase.database().reference()
-        let userReference = ref.child("users")
-        let newUserReference = userReference.child(uid)
-        newUserReference.setValue(["username": username,
-                                   "email": email,
-                                   "profileImageURL": profileImageURL])
-        
-        // segue to the Tab Bar Controller
-        self.performSegue(withIdentifier: "signUpToTabBar", sender: nil)
     }
     
 }
