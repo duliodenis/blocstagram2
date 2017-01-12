@@ -109,15 +109,12 @@ class SignInViewController: UIViewController {
     // MARK: - Sign In User Method
     
     @IBAction func signIn(_ sender: Any) {
-        // Use Firebase Authentication with email and password
-        FIRAuth.auth()?.signIn(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: { (user, error) in
-            if error != nil {
-                print("Authentication Error: \(error!.localizedDescription)")
-                return
-            }
-            
-            // segue to the Tab Bar Controller
+        // use the signIn class method of the AuthService class
+        AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, onSuccess: { 
+            // on success segue to the Tab Bar Controller
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
+        }, onError: { errorString in
+            print(errorString!)
         })
     }
 }
