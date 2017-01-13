@@ -130,9 +130,19 @@ class SignUpViewController: UIViewController {
     }
     
     
+    // MARK: - Dismiss Keyboard
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
     // MARK: - Sign Up User Method
     
     @IBAction func signUp(_ sender: Any) {
+        // dismiss keyboard
+        view.endEditing(true)
+        
         // convert selected image to JPEG Data format to push to file store
         if let profileImage = self.selectedProfilePhoto, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
             AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: imageData, onSuccess: {

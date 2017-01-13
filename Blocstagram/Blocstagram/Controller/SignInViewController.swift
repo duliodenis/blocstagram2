@@ -71,6 +71,7 @@ class SignInViewController: UIViewController {
         }
     }
     
+    
     // MARK: - Handle the Text Fields
     
     func handleTextField() {
@@ -106,9 +107,19 @@ class SignInViewController: UIViewController {
     }
     
     
+    // MARK: - Dismiss Keyboard 
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
     // MARK: - Sign In User Method
     
     @IBAction func signIn(_ sender: Any) {
+        //dismiss keyboard
+        view.endEditing(true)
+        
         // use the signIn class method of the AuthService class
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, onSuccess: { 
             // on success segue to the Tab Bar Controller
