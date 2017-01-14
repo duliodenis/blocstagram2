@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5168A53B1E2AA6080090FB07 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */; };
+		5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5168A53A1E2AA6080090FB07 /* ProgressHUD.m */; };
 		516C65A11E19667000547A9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65A01E19667000547A9B /* AppDelegate.swift */; };
 		516C65A81E19667000547A9B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516C65A71E19667000547A9B /* Assets.xcassets */; };
 		516C65AB1E19667000547A9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65A91E19667000547A9B /* LaunchScreen.storyboard */; };
@@ -32,6 +34,10 @@
 
 /* Begin PBXFileReference section */
 		071A29689C501195B90ADED0 /* Pods-Blocstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.release.xcconfig"; sourceTree = "<group>"; };
+		5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blocstagram-Bridging-Header.h"; sourceTree = "<group>"; };
+		5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = ProgressHUD/ProgressHUD.bundle; sourceTree = "<group>"; };
+		5168A5391E2AA6080090FB07 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = ProgressHUD/ProgressHUD.h; sourceTree = "<group>"; };
+		5168A53A1E2AA6080090FB07 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProgressHUD.m; path = ProgressHUD/ProgressHUD.m; sourceTree = "<group>"; };
 		516C659D1E19666F00547A9B /* Blocstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blocstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		516C65A01E19667000547A9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		516C65A71E19667000547A9B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +76,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5168A5361E2AA5EA0090FB07 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */,
+				5168A5391E2AA6080090FB07 /* ProgressHUD.h */,
+				5168A53A1E2AA6080090FB07 /* ProgressHUD.m */,
+			);
+			name = ProgressHUD;
+			sourceTree = "<group>";
+		};
 		516C65941E19666F00547A9B = {
 			isa = PBXGroup;
 			children = (
@@ -92,9 +108,11 @@
 			isa = PBXGroup;
 			children = (
 				516C65A01E19667000547A9B /* AppDelegate.swift */,
+				5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */,
 				51D91FE51E1D76DA00D02551 /* Views */,
 				51D91FE61E1D76E600D02551 /* Controllers */,
 				51E009451E25999900D37151 /* Services */,
+				5168A5361E2AA5EA0090FB07 /* ProgressHUD */,
 				516C65A71E19667000547A9B /* Assets.xcassets */,
 				516C65AC1E19667000547A9B /* Info.plist */,
 				51B4F0B41E1DCB3A00DD76FD /* GoogleService-Info.plist */,
@@ -192,6 +210,7 @@
 				TargetAttributes = {
 					516C659C1E19666F00547A9B = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -219,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5168A53B1E2AA6080090FB07 /* ProgressHUD.bundle in Resources */,
 				516C65C31E1ACA3B00547A9B /* TabBar.storyboard in Resources */,
 				516C65C91E1AD79200547A9B /* Camera.storyboard in Resources */,
 				516C65C51E1AD6BF00547A9B /* Home.storyboard in Resources */,
@@ -293,6 +313,7 @@
 				516C65B91E19BE7000547A9B /* HomeViewController.swift in Sources */,
 				516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */,
 				516C65BB1E19BEB500547A9B /* DiscoverViewController.swift in Sources */,
+				5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */,
 				516C65C11E19BF9800547A9B /* ProfileViewController.swift in Sources */,
 				51E009471E2599C000D37151 /* AuthService.swift in Sources */,
 				516C65BD1E19BEF500547A9B /* CameraViewController.swift in Sources */,
@@ -412,10 +433,13 @@
 			baseConfigurationReference = BE6AEA4F5F395C9DB7903A99 /* Pods-Blocstagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ddapps.blocstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Blocstagram/Blocstagram-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -425,10 +449,12 @@
 			baseConfigurationReference = 071A29689C501195B90ADED0 /* Pods-Blocstagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Blocstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ddapps.blocstagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Blocstagram/Blocstagram-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

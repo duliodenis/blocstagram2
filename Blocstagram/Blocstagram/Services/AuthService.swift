@@ -31,6 +31,7 @@ class AuthService {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user:FIRUser?, error: Error?) in
             if error != nil {
                 onError("Create User Error: \(error!.localizedDescription)")
+                return
             }
             
             let uid = user?.uid

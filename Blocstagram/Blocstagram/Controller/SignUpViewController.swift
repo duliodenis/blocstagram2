@@ -143,16 +143,20 @@ class SignUpViewController: UIViewController {
         // dismiss keyboard
         view.endEditing(true)
         
+        // show the progress to the user
+        ProgressHUD.show("Starting sign-up...", interaction: false)
+        
         // convert selected image to JPEG Data format to push to file store
         if let profileImage = self.selectedProfilePhoto, let imageData = UIImageJPEGRepresentation(profileImage, 0.1) {
             AuthService.signUp(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!, imageData: imageData, onSuccess: {
+                ProgressHUD.showSuccess("Sucessfully signed up.")
                 // segue to the Tab Bar Controller
                 self.performSegue(withIdentifier: "signUpToTabBar", sender: nil)
             }, onError: { (errorString) in
-                print(errorString!)
+                ProgressHUD.showError(errorString!)
             })
         } else {
-            print("Profile Image can not be empty.")
+            ProgressHUD.showError("Your profile image can not be empty. Tap it to set it.")
         }
     }
     

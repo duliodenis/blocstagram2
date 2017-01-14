@@ -120,12 +120,16 @@ class SignInViewController: UIViewController {
         //dismiss keyboard
         view.endEditing(true)
         
+        // show the progress to the user
+        ProgressHUD.show("Starting sign-in...", interaction: false)
+        
         // use the signIn class method of the AuthService class
         AuthService.signIn(email: emailTextField.text!, password: passwordTextField.text!, onSuccess: { 
             // on success segue to the Tab Bar Controller
+            ProgressHUD.showSuccess("Sucessfully signed in.")
             self.performSegue(withIdentifier: "signInToTabBar", sender: nil)
         }, onError: { errorString in
-            print(errorString!)
+            ProgressHUD.showError(errorString!)
         })
     }
 }
