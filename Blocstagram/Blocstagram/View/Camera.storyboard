@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ery-hp-Fes">
                                 <rect key="frame" x="0.0" y="64" width="375" height="100"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-photo" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-ra-uUy">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder-photo" translatesAutoresizingMaskIntoConstraints="NO" id="hxD-ra-uUy">
                                         <rect key="frame" x="8" y="10" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="9Oi-Jj-OEp"/>
@@ -61,6 +61,9 @@
                                 <state key="normal" title="Share">
                                     <color key="titleColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="share:" destination="gwx-UJ-d6d" eventType="touchUpInside" id="aoj-r2-WDL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -74,6 +77,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Camera" id="ka8-QI-oWi"/>
+                    <connections>
+                        <outlet property="captionTextView" destination="eEy-Fv-qlq" id="Rfa-1V-LQQ"/>
+                        <outlet property="photoImageView" destination="hxD-ra-uUy" id="qhi-u1-z2L"/>
+                        <outlet property="shareButton" destination="bSc-aB-Or4" id="B60-TI-qyw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBi-iY-ec0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
