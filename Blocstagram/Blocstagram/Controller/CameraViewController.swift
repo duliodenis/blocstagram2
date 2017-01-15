@@ -16,6 +16,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var clearBarButton: UIBarButtonItem!
     
     var selectedImage: UIImage?
     
@@ -36,12 +37,35 @@ class CameraViewController: UIViewController {
     }
     
     
-    // MARK: - Handle the Image Selection
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setButtons()
+    }
+    
+    
+    // MARK: - Handle the Image Selection and Button UI
     
     func handlePhotoSelection() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         present(imagePickerController, animated: true)
+    }
+    
+    
+    // based on the image toggle the buttons
+    
+    func setButtons() {
+        if selectedImage != nil {
+            // if there is an image the buttons should be enabled
+            shareButton.isEnabled = true
+            shareButton.alpha = 1.0
+            clearBarButton.isEnabled = true
+        } else {
+            // otherwise - disable the buttons
+            shareButton.isEnabled = false
+            shareButton.alpha = 0.2
+            clearBarButton.isEnabled = false
+        }
     }
     
     
@@ -81,6 +105,22 @@ class CameraViewController: UIViewController {
     }
     
     
+    // MARK: - Dismiss Keyboard
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    
+    @IBAction func clearInputs() {
+        // clear photo, selected image and caption text after saving
+        self.captionTextView.text = ""
+        self.photoImageView.image = UIImage(named: "placeholder-photo")
+        self.selectedImage = nil
+        setButtons()
+    }
+    
+    
     // MARK: - Save to Firebase Method
     
     func saveToDatabase(photoURL: String) {
@@ -89,13 +129,17 @@ class CameraViewController: UIViewController {
         let newPostID = postsReference.childByAutoId().key
         
         let newPostReference = postsReference.child(newPostID)
-        newPostReference.setValue(["photoURL": photoURL]) { (error, reference) in
+        newPostReference.setValue(["photoURL": photoURL, "caption": captionTextView.text!]) { (error, reference) in
             if error != nil {
                 ProgressHUD.showError("Photo Save Error: \(error?.localizedDescription)")
                 return
             }
             
             ProgressHUD.showSuccess("Photo shared")
+            
+            self.clearInputs()
+            // and jump to the Home tab
+            self.tabBarController?.selectedIndex = 0
         }
     }
     

@@ -33,8 +33,7 @@
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eEy-Fv-qlq">
                                         <rect key="frame" x="96" y="10" width="271" height="80"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="backgroundColor" red="0.92549019610000005" green="0.94117647059999998" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -76,9 +75,17 @@
                             <constraint firstItem="Ery-hp-Fes" firstAttribute="leading" secondItem="pTW-eb-E1B" secondAttribute="leading" id="xlv-Lt-gxt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Camera" id="ka8-QI-oWi"/>
+                    <navigationItem key="navigationItem" title="Camera" id="ka8-QI-oWi">
+                        <barButtonItem key="leftBarButtonItem" title="Clear" id="Oem-Jg-3aW">
+                            <color key="tintColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="clearInputs" destination="gwx-UJ-d6d" id="27Z-m4-5c1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="eEy-Fv-qlq" id="Rfa-1V-LQQ"/>
+                        <outlet property="clearBarButton" destination="Oem-Jg-3aW" id="lyD-yD-f4A"/>
                         <outlet property="photoImageView" destination="hxD-ra-uUy" id="qhi-u1-z2L"/>
                         <outlet property="shareButton" destination="bSc-aB-Or4" id="B60-TI-qyw"/>
                     </connections>
