@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC8E11E2D4DE7001CD672 /* Post.swift */; };
 		5168A53B1E2AA6080090FB07 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */; };
 		5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5168A53A1E2AA6080090FB07 /* ProgressHUD.m */; };
 		516C65A11E19667000547A9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 516C65A01E19667000547A9B /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		071A29689C501195B90ADED0 /* Pods-Blocstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.release.xcconfig"; sourceTree = "<group>"; };
+		514DC8E11E2D4DE7001CD672 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
 		5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blocstagram-Bridging-Header.h"; sourceTree = "<group>"; };
 		5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ProgressHUD.bundle; path = ProgressHUD/ProgressHUD.bundle; sourceTree = "<group>"; };
 		5168A5391E2AA6080090FB07 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProgressHUD.h; path = ProgressHUD/ProgressHUD.h; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		514DC8E01E2D4DC5001CD672 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				514DC8E11E2D4DE7001CD672 /* Post.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		5168A5361E2AA5EA0090FB07 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +119,7 @@
 			children = (
 				516C65A01E19667000547A9B /* AppDelegate.swift */,
 				5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */,
+				514DC8E01E2D4DC5001CD672 /* Model */,
 				51D91FE51E1D76DA00D02551 /* Views */,
 				51D91FE61E1D76E600D02551 /* Controllers */,
 				51E009451E25999900D37151 /* Services */,
@@ -310,6 +321,7 @@
 				516C65B71E1981C100547A9B /* SignUpViewController.swift in Sources */,
 				516C65B51E196E4B00547A9B /* SignInViewController.swift in Sources */,
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
+				514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */,
 				516C65B91E19BE7000547A9B /* HomeViewController.swift in Sources */,
 				516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */,
 				516C65BB1E19BEB500547A9B /* DiscoverViewController.swift in Sources */,

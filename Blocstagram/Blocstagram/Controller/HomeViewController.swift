@@ -8,16 +8,21 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
+
 
 class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var posts = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //tableView.delegate = self
         tableView.dataSource = self
+        
+        loadPosts()
     }
     
     
@@ -38,6 +43,24 @@ class HomeViewController: UIViewController {
         present(signInVC, animated: true)
     }
     
+    
+    // MARK: - Firebase Data Loading Method
+    
+    func loadPosts() {
+        FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
+            if let postDictionary = snapshot.value as? [String: Any] {
+                let caption = postDictionary["caption"] as! String
+                let photoURL = postDictionary["photoURL"] as! String
+                let post = Post(caption: caption, photoURL: photoURL)
+                self.posts.append(post)
+                
+                self.tableView.reloadData()
+            }
+        }
+        
+        
+    }
+    
 }
 
 
@@ -46,12 +69,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-        cell.textLabel?.text = "\(indexPath.row + 1)"
+        cell.textLabel?.text = posts[indexPath.row].caption
         return cell
     }
     
