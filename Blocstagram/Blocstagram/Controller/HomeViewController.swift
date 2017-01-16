@@ -11,9 +11,13 @@ import FirebaseAuth
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
+        
+        //tableView.delegate = self
+        tableView.dataSource = self
     }
     
     
@@ -32,6 +36,23 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Start", bundle: nil)
         let signInVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController")
         present(signInVC, animated: true)
+    }
+    
+}
+
+
+// MARK: - TableView Delegate and Data Source Methods
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
+        cell.textLabel?.text = "\(indexPath.row + 1)"
+        return cell
     }
     
 }
