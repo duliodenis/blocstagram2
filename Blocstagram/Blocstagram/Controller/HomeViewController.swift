@@ -18,6 +18,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // for performance set an estimated row height
+        tableView.estimatedRowHeight = 571
+        // but also request to dynamically adjust to content using AutoLayout
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         //tableView.delegate = self
         tableView.dataSource = self
@@ -69,8 +73,14 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath)
-        cell.textLabel?.text = posts[indexPath.row].caption
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
+        
+        // hard code some values to test interface
+        cell.profileImageView.image = UIImage(named: "profile-1.jpg")
+        cell.nameLabel.text = "Brianna"
+        cell.postImageView.image = UIImage(named: "sample-photo-1.jpg")
+        cell.captionLabel.text = "An awesome day at the beach with Amy. She has really been eating her wheaties cause she picked me up like a bad habit. #BFF"
+    
         return cell
     }
     

@@ -25,19 +25,24 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" rowHeight="507" id="jGc-Fo-MMv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HomeCell" rowHeight="507" id="jGc-Fo-MMv" customClass="HomeTableViewCell" customModule="Blocstagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="507"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jGc-Fo-MMv" id="OQa-iC-ZzF">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="507"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="88l-ap-4T1">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="88l-ap-4T1">
                                                     <rect key="frame" x="8" y="8" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="ZUF-Qr-KL4"/>
                                                         <constraint firstAttribute="height" constant="50" id="vFY-bC-i7r"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ceh-RK-QtZ">
                                                     <rect key="frame" x="66" y="25.5" width="35.5" height="16"/>
@@ -45,7 +50,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QDK-Ad-ZKL">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QDK-Ad-ZKL">
                                                     <rect key="frame" x="0.0" y="66" width="375" height="300"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="300" id="Bhc-w8-TGu"/>
@@ -78,7 +83,7 @@
                                                         <color key="titleColor" red="0.20392156859999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-jo-Vtn">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-jo-Vtn">
                                                     <rect key="frame" x="8" y="469" width="359" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -96,6 +101,7 @@
                                                 <constraint firstItem="88l-ap-4T1" firstAttribute="leading" secondItem="OQa-iC-ZzF" secondAttribute="leading" constant="8" id="Eto-e7-az1"/>
                                                 <constraint firstItem="S51-gF-Igo" firstAttribute="height" secondItem="h3n-Fn-OeS" secondAttribute="height" id="FWC-iZ-5hn"/>
                                                 <constraint firstItem="Ceh-RK-QtZ" firstAttribute="leading" secondItem="88l-ap-4T1" secondAttribute="trailing" constant="8" id="HxI-3H-xEQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="RW1-jo-Vtn" secondAttribute="bottom" constant="24" id="Iy5-xn-u72"/>
                                                 <constraint firstItem="Kyn-Vn-iWb" firstAttribute="height" secondItem="h3n-Fn-OeS" secondAttribute="height" id="K3p-oO-MZO"/>
                                                 <constraint firstItem="RW1-jo-Vtn" firstAttribute="top" secondItem="oaj-xI-QJq" secondAttribute="bottom" constant="8" id="KAU-EU-FYs"/>
                                                 <constraint firstItem="S51-gF-Igo" firstAttribute="width" secondItem="h3n-Fn-OeS" secondAttribute="width" id="KZX-gr-CqT"/>
@@ -113,6 +119,16 @@
                                                 <constraint firstItem="xa4-K7-Qzv" firstAttribute="leading" secondItem="OQa-iC-ZzF" secondAttribute="leading" constant="8" id="zIs-zO-GfU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="captionLabel" destination="RW1-jo-Vtn" id="ZwM-RK-TU2"/>
+                                            <outlet property="commentImageView" destination="Kyn-Vn-iWb" id="YXO-qv-cO1"/>
+                                            <outlet property="likeCountButton" destination="oaj-xI-QJq" id="il0-07-X3A"/>
+                                            <outlet property="likeImageView" destination="h3n-Fn-OeS" id="HWX-oG-RzC"/>
+                                            <outlet property="nameLabel" destination="Ceh-RK-QtZ" id="Yak-JX-oqs"/>
+                                            <outlet property="postImageView" destination="QDK-Ad-ZKL" id="zxl-Pj-q6t"/>
+                                            <outlet property="profileImageView" destination="88l-ap-4T1" id="1Rj-WV-jAP"/>
+                                            <outlet property="shareImageView" destination="S51-gF-Igo" id="Wws-8e-wdX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
