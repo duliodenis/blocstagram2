@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import SDWebImage
 
 
 class HomeViewController: UIViewController {
@@ -75,11 +76,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
         
-        // hard code some values to test interface
-        cell.profileImageView.image = UIImage(named: "profile-1.jpg")
-        cell.nameLabel.text = "Brianna"
-        cell.postImageView.image = UIImage(named: "sample-photo-1.jpg")
-        cell.captionLabel.text = "An awesome day at the beach with Amy. She has really been eating her wheaties cause she picked me up like a bad habit. #BFF"
+        cell.post = posts[indexPath.row]
     
         return cell
     }

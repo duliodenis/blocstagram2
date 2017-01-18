@@ -19,13 +19,29 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var post: Post? {
+        didSet {
+            updateView()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+    }
+    
+    func updateView() {
+        captionLabel.text = post?.caption
+        if let photoURL = post?.photoURL {
+            postImageView.sd_setImage(with: URL(string: photoURL))
+        }
+        
+        // hard code some values to test interface
+        profileImageView.image = UIImage(named: "profile-1.jpg")
+        nameLabel.text = "Brianna"
     }
 
 }

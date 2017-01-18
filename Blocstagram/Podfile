@@ -10,5 +10,8 @@ target 'Blocstagram' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  
+  # Pod for SDWebImage
+  pod 'SDWebImage'
 
 end
