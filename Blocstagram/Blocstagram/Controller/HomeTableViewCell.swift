@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -26,8 +25,16 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    var user: User? {
+        didSet {
+            updateUserInfo()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        nameLabel.text = ""
+        captionLabel.text = ""
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,19 +50,17 @@ class HomeTableViewCell: UITableViewCell {
         updateUserInfo()
     }
     
+    // flush the user profile image before a reuse
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "profile")
+    }
+    
+    // fetch the values from the user variable
     func updateUserInfo() {
-        if let uid = post?.uid {
-            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
-                if let postDictionary = snapshot.value as? [String: Any] {
-                    
-                    let user = User.transformUser(postDictionary: postDictionary)
-                    self.nameLabel.text = user.username
-                    
-                    if let photoURL = user.profileImageURL {
-                        self.profileImageView.sd_setImage(with: URL(string: photoURL))
-                    }
-                }
-            })
+        nameLabel.text = user?.username
+        if let photoURL = user?.profileImageURL {
+            profileImageView.sd_setImage(with: URL(string: photoURL), placeholderImage: UIImage(named: "profile"))
         }
     }
 

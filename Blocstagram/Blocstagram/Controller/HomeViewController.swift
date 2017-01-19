@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var posts = [Post]()
+    var users = [User]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +56,31 @@ class HomeViewController: UIViewController {
         FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
             if let postDictionary = snapshot.value as? [String: Any] {
                 
-                self.posts.append(Post.transformPost(postDictionary: postDictionary))
-                
-                self.tableView.reloadData()
+                let newPost = Post.transformPost(postDictionary: postDictionary)
+
+                self.fetchUser(uid: newPost.uid!, completed: {
+                    // append the new Post and Reload after the user 
+                    // has been cached
+                    self.posts.append(newPost)
+                    self.tableView.reloadData()
+                })
             }
         }
+    }
+    
+    
+    // fetch all user info at once and cache it into the users array
+    
+    func fetchUser(uid: String, completed: @escaping () -> Void) {
+        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
+            if let postDictionary = snapshot.value as? [String: Any] {
+                
+                let user = User.transformUser(postDictionary: postDictionary)
+                self.users.append(user)
+                
+                completed()
+            }
+        })
     }
     
 }
@@ -77,6 +98,7 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeTableViewCell
         
         cell.post = posts[indexPath.row]
+        cell.user = users[indexPath.row]
     
         return cell
     }
