@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -39,9 +40,23 @@ class HomeTableViewCell: UITableViewCell {
             postImageView.sd_setImage(with: URL(string: photoURL))
         }
         
-        // hard code some values to test interface
-        profileImageView.image = UIImage(named: "profile-1.jpg")
-        nameLabel.text = "Brianna"
+        updateUserInfo()
+    }
+    
+    func updateUserInfo() {
+        if let uid = post?.uid {
+            FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
+                if let postDictionary = snapshot.value as? [String: Any] {
+                    
+                    let user = User.transformUser(postDictionary: postDictionary)
+                    self.nameLabel.text = user.username
+                    
+                    if let photoURL = user.profileImageURL {
+                        self.profileImageView.sd_setImage(with: URL(string: photoURL))
+                    }
+                }
+            })
+        }
     }
 
 }

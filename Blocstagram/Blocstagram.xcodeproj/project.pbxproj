@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		511C1A871E3037CF00E39FFA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511C1A861E3037CF00E39FFA /* User.swift */; };
 		514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC8E11E2D4DE7001CD672 /* Post.swift */; };
 		514DC8E41E2E96E5001CD672 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC8E31E2E96E5001CD672 /* HomeTableViewCell.swift */; };
 		5168A53B1E2AA6080090FB07 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		071A29689C501195B90ADED0 /* Pods-Blocstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.release.xcconfig"; sourceTree = "<group>"; };
+		511C1A861E3037CF00E39FFA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		514DC8E11E2D4DE7001CD672 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
 		514DC8E31E2E96E5001CD672 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = Controller/HomeTableViewCell.swift; sourceTree = "<group>"; };
 		5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blocstagram-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				514DC8E11E2D4DE7001CD672 /* Post.swift */,
+				511C1A861E3037CF00E39FFA /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
 				514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */,
 				516C65B91E19BE7000547A9B /* HomeViewController.swift in Sources */,
+				511C1A871E3037CF00E39FFA /* User.swift in Sources */,
 				516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */,
 				516C65BB1E19BEB500547A9B /* DiscoverViewController.swift in Sources */,
 				5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */,

@@ -11,6 +11,7 @@ import Foundation
 class Post {
     var caption: String?
     var photoURL: String?
+    var uid: String?
 }
 
 extension Post {
@@ -20,6 +21,7 @@ extension Post {
         
         post.caption = postDictionary["caption"] as? String
         post.photoURL = postDictionary["photoURL"] as? String
+        post.uid = postDictionary["uid"] as? String
         
         return post
     }
