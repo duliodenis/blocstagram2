@@ -132,12 +132,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="bku-4F-pV5">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DKU-uj-1BC" secondAttribute="bottom" id="Kr0-FW-jep"/>
                             <constraint firstAttribute="trailing" secondItem="DKU-uj-1BC" secondAttribute="trailing" id="aAn-Zg-Gok"/>
+                            <constraint firstItem="bku-4F-pV5" firstAttribute="centerX" secondItem="JGJ-bN-V8n" secondAttribute="centerX" id="btw-Zv-YYk"/>
                             <constraint firstItem="DKU-uj-1BC" firstAttribute="top" secondItem="JGJ-bN-V8n" secondAttribute="top" id="mby-Tc-Wbj"/>
+                            <constraint firstItem="bku-4F-pV5" firstAttribute="centerY" secondItem="JGJ-bN-V8n" secondAttribute="centerY" id="rf3-7m-Sft"/>
                             <constraint firstItem="DKU-uj-1BC" firstAttribute="leading" secondItem="JGJ-bN-V8n" secondAttribute="leading" id="vL4-3t-wIl"/>
                         </constraints>
                     </view>
@@ -150,6 +155,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="bku-4F-pV5" id="gAb-Pv-b9E"/>
                         <outlet property="tableView" destination="DKU-uj-1BC" id="Ggo-f8-AcG"/>
                     </connections>
                 </viewController>

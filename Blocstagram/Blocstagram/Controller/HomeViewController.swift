@@ -14,6 +14,7 @@ import SDWebImage
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     var posts = [Post]()
     var users = [User]()
@@ -53,6 +54,7 @@ class HomeViewController: UIViewController {
     // MARK: - Firebase Data Loading Method
     
     func loadPosts() {
+        activityIndicatorView.startAnimating()
         FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
             if let postDictionary = snapshot.value as? [String: Any] {
                 
@@ -62,6 +64,7 @@ class HomeViewController: UIViewController {
                     // append the new Post and Reload after the user 
                     // has been cached
                     self.posts.append(newPost)
+                    self.activityIndicatorView.stopAnimating()
                     self.tableView.reloadData()
                 })
             }
