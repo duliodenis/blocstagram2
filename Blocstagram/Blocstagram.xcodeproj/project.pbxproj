@@ -30,6 +30,8 @@
 		516C65CB1E1AD80000547A9B /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65CA1E1AD80000547A9B /* Activity.storyboard */; };
 		516C65CD1E1AD86500547A9B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516C65CC1E1AD86500547A9B /* Profile.storyboard */; };
 		51B4F0B51E1DCB3A00DD76FD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51B4F0B41E1DCB3A00DD76FD /* GoogleService-Info.plist */; };
+		51DAA6481E32D6A400D5B457 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DAA6471E32D6A400D5B457 /* CommentViewController.swift */; };
+		51DAA64A1E32D73500D5B457 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51DAA6491E32D73500D5B457 /* CommentTableViewCell.swift */; };
 		51E009441E22BF0600D37151 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E009431E22BF0600D37151 /* Constants.swift */; };
 		51E009471E2599C000D37151 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E009461E2599C000D37151 /* AuthService.swift */; };
 		AAF13790359D07ECD17066C4 /* Pods_Blocstagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94062A553C35D5EF531075D5 /* Pods_Blocstagram.framework */; };
@@ -64,6 +66,8 @@
 		516C65CA1E1AD80000547A9B /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Activity.storyboard; path = View/Activity.storyboard; sourceTree = "<group>"; };
 		516C65CC1E1AD86500547A9B /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = View/Profile.storyboard; sourceTree = "<group>"; };
 		51B4F0B41E1DCB3A00DD76FD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		51DAA6471E32D6A400D5B457 /* CommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentViewController.swift; path = Controller/CommentViewController.swift; sourceTree = "<group>"; };
+		51DAA6491E32D73500D5B457 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentTableViewCell.swift; path = Controller/CommentTableViewCell.swift; sourceTree = "<group>"; };
 		51E009431E22BF0600D37151 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		51E009461E2599C000D37151 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthService.swift; path = Services/AuthService.swift; sourceTree = "<group>"; };
 		94062A553C35D5EF531075D5 /* Pods_Blocstagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blocstagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +163,8 @@
 				516C65B61E1981C000547A9B /* SignUpViewController.swift */,
 				516C65B81E19BE7000547A9B /* HomeViewController.swift */,
 				514DC8E31E2E96E5001CD672 /* HomeTableViewCell.swift */,
+				51DAA6471E32D6A400D5B457 /* CommentViewController.swift */,
+				51DAA6491E32D73500D5B457 /* CommentTableViewCell.swift */,
 				516C65BA1E19BEB500547A9B /* DiscoverViewController.swift */,
 				516C65BC1E19BEF500547A9B /* CameraViewController.swift */,
 				516C65BE1E19BF4F00547A9B /* ActivityViewController.swift */,
@@ -329,11 +335,13 @@
 				514DC8E41E2E96E5001CD672 /* HomeTableViewCell.swift in Sources */,
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
 				514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */,
+				51DAA6481E32D6A400D5B457 /* CommentViewController.swift in Sources */,
 				516C65B91E19BE7000547A9B /* HomeViewController.swift in Sources */,
 				511C1A871E3037CF00E39FFA /* User.swift in Sources */,
 				516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */,
 				516C65BB1E19BEB500547A9B /* DiscoverViewController.swift in Sources */,
 				5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */,
+				51DAA64A1E32D73500D5B457 /* CommentTableViewCell.swift in Sources */,
 				516C65C11E19BF9800547A9B /* ProfileViewController.swift in Sources */,
 				51E009471E2599C000D37151 /* AuthService.swift in Sources */,
 				516C65BD1E19BEF500547A9B /* CameraViewController.swift in Sources */,
