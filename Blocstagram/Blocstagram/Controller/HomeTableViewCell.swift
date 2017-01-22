@@ -46,8 +46,6 @@ class HomeTableViewCell: UITableViewCell {
         if let photoURL = post?.photoURL {
             postImageView.sd_setImage(with: URL(string: photoURL))
         }
-        
-        updateUserInfo()
     }
     
     // flush the user profile image before a reuse
