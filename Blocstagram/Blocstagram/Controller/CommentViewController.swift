@@ -17,6 +17,8 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var constraintToBottom: NSLayoutConstraint!
+    
     var postID = "postID"
     var comments = [Comment]()
     var users = [User]()
@@ -36,6 +38,11 @@ class CommentViewController: UIViewController {
         handleTextField()
         prepareForNewComment()
         loadComments()
+        
+        // Set Keyboard Observers
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardDidShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +55,29 @@ class CommentViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    
+    // MARK: - Keyboard Notification Response Methods
+    
+    func keyboardWillShow(_ notification: NSNotification) {
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        UIView.animate(withDuration: 0.3) {
+            self.constraintToBottom.constant = keyboardFrame!.height
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func keyboardWillHide(_ notification: NSNotification) {
+        UIView.animate(withDuration: 0.3) {
+            self.constraintToBottom.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     
     // MARK: - Firebase Save Operation
     
@@ -74,6 +104,7 @@ class CommentViewController: UIViewController {
             })
             
             self.prepareForNewComment()
+            self.view.endEditing(true)
         }
     }
     

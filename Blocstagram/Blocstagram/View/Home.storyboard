@@ -292,6 +292,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="commentTextField" destination="onT-jW-F7U" id="yLU-18-KmL"/>
+                        <outlet property="constraintToBottom" destination="J71-R0-bFU" id="32D-hO-M89"/>
                         <outlet property="sendButton" destination="UrA-t6-wmc" id="4uZ-da-7LM"/>
                         <outlet property="tableView" destination="fWy-90-yXX" id="HJu-Xc-6gE"/>
                     </connections>
