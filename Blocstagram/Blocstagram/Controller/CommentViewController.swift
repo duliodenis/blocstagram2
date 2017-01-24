@@ -19,7 +19,7 @@ class CommentViewController: UIViewController {
     
     @IBOutlet weak var constraintToBottom: NSLayoutConstraint!
     
-    var postID = "postID"
+    var postID: String!
     var comments = [Comment]()
     var users = [User]()
     
@@ -27,6 +27,7 @@ class CommentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Comments"
         
         // for performance set an estimated row height
         tableView.estimatedRowHeight = 70
@@ -115,8 +116,8 @@ class CommentViewController: UIViewController {
         let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postID)
         postCommentRef.observe(.childAdded) { snapshot in
             FIRDatabase.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: { snapshotComment in
-                if let postDictionary = snapshot.value as? [String: Any] {
-                    
+                if let postDictionary = snapshotComment.value as? [String: Any] {
+
                     let newComment = Comment.transformComment(postDictionary: postDictionary)
                     
                     self.fetchUser(uid: newComment.uid!, completed: {

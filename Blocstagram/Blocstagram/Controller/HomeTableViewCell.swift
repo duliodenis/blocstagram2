@@ -19,6 +19,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCountButton: UIButton!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var homeVC: HomeViewController?
+    
     var post: Post? {
         didSet {
             updateView()
@@ -35,6 +37,11 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         nameLabel.text = ""
         captionLabel.text = ""
+        
+        // add a tap gesture to the comment image for users to segue to the commentVC
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCommentImageViewTap))
+        commentImageView.addGestureRecognizer(tapGesture)
+        commentImageView.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -59,6 +66,15 @@ class HomeTableViewCell: UITableViewCell {
         nameLabel.text = user?.username
         if let photoURL = user?.profileImageURL {
             profileImageView.sd_setImage(with: URL(string: photoURL), placeholderImage: UIImage(named: "profile"))
+        }
+    }
+    
+    
+    // MARK: - Comment ImageView Segue
+    
+    func handleCommentImageViewTap() {
+        if let id = post?.id {
+            homeVC?.performSegue(withIdentifier: "CommentSegue", sender: id)
         }
     }
 

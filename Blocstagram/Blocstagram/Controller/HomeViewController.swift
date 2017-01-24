@@ -58,7 +58,7 @@ class HomeViewController: UIViewController {
         FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
             if let postDictionary = snapshot.value as? [String: Any] {
                 
-                let newPost = Post.transformPost(postDictionary: postDictionary)
+                let newPost = Post.transformPost(postDictionary: postDictionary, key: snapshot.key)
 
                 self.fetchUser(uid: newPost.uid!, completed: {
                     // append the new Post and Reload after the user 
@@ -86,6 +86,16 @@ class HomeViewController: UIViewController {
         })
     }
     
+    
+    // MARK: - Prepare for Segue to CommentVC
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CommentSegue" {
+            let commentVC = segue.destination as! CommentViewController
+            commentVC.postID = sender as! String
+        }
+    }
+    
 }
 
 
@@ -102,6 +112,7 @@ extension HomeViewController: UITableViewDataSource {
         
         cell.post = posts[indexPath.row]
         cell.user = users[indexPath.row]
+        cell.homeVC = self
     
         return cell
     }
