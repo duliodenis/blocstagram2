@@ -55,19 +55,15 @@ class HomeViewController: UIViewController {
     
     func loadPosts() {
         activityIndicatorView.startAnimating()
-        FIRDatabase.database().reference().child("posts").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
-            if let postDictionary = snapshot.value as? [String: Any] {
-                
-                let newPost = Post.transformPost(postDictionary: postDictionary, key: snapshot.key)
-
-                self.fetchUser(uid: newPost.uid!, completed: {
-                    // append the new Post and Reload after the user 
-                    // has been cached
-                    self.posts.append(newPost)
-                    self.activityIndicatorView.stopAnimating()
-                    self.tableView.reloadData()
-                })
-            }
+        
+        API.Post.observePosts { (newPost) in
+            self.fetchUser(uid: newPost.uid!, completed: {
+                // append the new Post and Reload after the user
+                // has been cached
+                self.posts.append(newPost)
+                self.activityIndicatorView.stopAnimating()
+                self.tableView.reloadData()
+            })
         }
     }
     
@@ -75,15 +71,12 @@ class HomeViewController: UIViewController {
     // fetch all user info at once and cache it into the users array
     
     func fetchUser(uid: String, completed: @escaping () -> Void) {
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
-            if let postDictionary = snapshot.value as? [String: Any] {
-                
-                let user = User.transformUser(postDictionary: postDictionary)
-                self.users.append(user)
-                
-                completed()
-            }
-        })
+        
+        API.User.observeUser(withID: uid) { user in
+            self.users.append(user)
+            
+            completed()
+        }
     }
     
     

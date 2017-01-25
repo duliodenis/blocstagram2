@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		511C1A871E3037CF00E39FFA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511C1A861E3037CF00E39FFA /* User.swift */; };
+		513D77781E37B23A000224DC /* PostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D77771E37B23A000224DC /* PostAPI.swift */; };
+		513D777A1E37B558000224DC /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D77791E37B558000224DC /* UserAPI.swift */; };
+		513D777C1E37B87B000224DC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D777B1E37B87B000224DC /* API.swift */; };
+		513D777E1E37B9C9000224DC /* CommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D777D1E37B9C9000224DC /* CommentAPI.swift */; };
+		513D77801E3816AF000224DC /* PostCommentAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D777F1E3816AF000224DC /* PostCommentAPI.swift */; };
 		514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC8E11E2D4DE7001CD672 /* Post.swift */; };
 		514DC8E41E2E96E5001CD672 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514DC8E31E2E96E5001CD672 /* HomeTableViewCell.swift */; };
 		5168A53B1E2AA6080090FB07 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5168A5381E2AA6080090FB07 /* ProgressHUD.bundle */; };
@@ -41,6 +46,11 @@
 /* Begin PBXFileReference section */
 		071A29689C501195B90ADED0 /* Pods-Blocstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.release.xcconfig"; sourceTree = "<group>"; };
 		511C1A861E3037CF00E39FFA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
+		513D77771E37B23A000224DC /* PostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostAPI.swift; path = Model/PostAPI.swift; sourceTree = "<group>"; };
+		513D77791E37B558000224DC /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserAPI.swift; path = Model/UserAPI.swift; sourceTree = "<group>"; };
+		513D777B1E37B87B000224DC /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = API.swift; path = Model/API.swift; sourceTree = "<group>"; };
+		513D777D1E37B9C9000224DC /* CommentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommentAPI.swift; path = Model/CommentAPI.swift; sourceTree = "<group>"; };
+		513D777F1E3816AF000224DC /* PostCommentAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostCommentAPI.swift; path = Model/PostCommentAPI.swift; sourceTree = "<group>"; };
 		514DC8E11E2D4DE7001CD672 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Model/Post.swift; sourceTree = "<group>"; };
 		514DC8E31E2E96E5001CD672 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = Controller/HomeTableViewCell.swift; sourceTree = "<group>"; };
 		5168A5371E2AA6070090FB07 /* Blocstagram-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blocstagram-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -94,6 +104,11 @@
 				514DC8E11E2D4DE7001CD672 /* Post.swift */,
 				511C1A861E3037CF00E39FFA /* User.swift */,
 				51DAA66F1E35349300D5B457 /* Comment.swift */,
+				513D777B1E37B87B000224DC /* API.swift */,
+				513D77771E37B23A000224DC /* PostAPI.swift */,
+				513D77791E37B558000224DC /* UserAPI.swift */,
+				513D777D1E37B9C9000224DC /* CommentAPI.swift */,
+				513D777F1E3816AF000224DC /* PostCommentAPI.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -335,6 +350,8 @@
 			files = (
 				516C65B71E1981C100547A9B /* SignUpViewController.swift in Sources */,
 				516C65B51E196E4B00547A9B /* SignInViewController.swift in Sources */,
+				513D77781E37B23A000224DC /* PostAPI.swift in Sources */,
+				513D777A1E37B558000224DC /* UserAPI.swift in Sources */,
 				514DC8E41E2E96E5001CD672 /* HomeTableViewCell.swift in Sources */,
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
 				514DC8E21E2D4DE7001CD672 /* Post.swift in Sources */,
@@ -342,9 +359,12 @@
 				51DAA6481E32D6A400D5B457 /* CommentViewController.swift in Sources */,
 				516C65B91E19BE7000547A9B /* HomeViewController.swift in Sources */,
 				511C1A871E3037CF00E39FFA /* User.swift in Sources */,
+				513D777E1E37B9C9000224DC /* CommentAPI.swift in Sources */,
 				516C65BF1E19BF4F00547A9B /* ActivityViewController.swift in Sources */,
 				516C65BB1E19BEB500547A9B /* DiscoverViewController.swift in Sources */,
 				5168A53C1E2AA6080090FB07 /* ProgressHUD.m in Sources */,
+				513D777C1E37B87B000224DC /* API.swift in Sources */,
+				513D77801E3816AF000224DC /* PostCommentAPI.swift in Sources */,
 				51DAA64A1E32D73500D5B457 /* CommentTableViewCell.swift in Sources */,
 				516C65C11E19BF9800547A9B /* ProfileViewController.swift in Sources */,
 				51E009471E2599C000D37151 /* AuthService.swift in Sources */,

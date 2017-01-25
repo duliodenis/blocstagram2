@@ -115,18 +115,13 @@ class CommentViewController: UIViewController {
     func loadComments() {
         let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postID)
         postCommentRef.observe(.childAdded) { snapshot in
-            FIRDatabase.database().reference().child("comments").child(snapshot.key).observeSingleEvent(of: .value, with: { snapshotComment in
-                if let postDictionary = snapshotComment.value as? [String: Any] {
-
-                    let newComment = Comment.transformComment(postDictionary: postDictionary)
-                    
-                    self.fetchUser(uid: newComment.uid!, completed: {
-                        // append the new Comment and Reload after the user
-                        // has been cached
-                        self.comments.append(newComment)
-                        self.tableView.reloadData()
-                    })
-                }
+            API.Comment.observeComments(withPostID: snapshot.key, completion: { (newComment) in
+                self.fetchUser(uid: newComment.uid!, completed: {
+                    // append the new Comment and Reload after the user
+                    // has been cached
+                    self.comments.append(newComment)
+                    self.tableView.reloadData()
+                })
             })
         }
     }
@@ -135,15 +130,11 @@ class CommentViewController: UIViewController {
     // fetch all user info at once and cache it into the users array
     
     func fetchUser(uid: String, completed: @escaping () -> Void) {
-        FIRDatabase.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { snapshot in
-            if let postDictionary = snapshot.value as? [String: Any] {
-                
-                let user = User.transformUser(postDictionary: postDictionary)
+        API.User.observeUser(withID: uid) { user in
                 self.users.append(user)
                 
                 completed()
             }
-        })
     }
     
     
