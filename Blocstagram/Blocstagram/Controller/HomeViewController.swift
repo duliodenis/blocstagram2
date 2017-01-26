@@ -57,7 +57,8 @@ class HomeViewController: UIViewController {
         activityIndicatorView.startAnimating()
         
         API.Post.observePosts { (newPost) in
-            self.fetchUser(uid: newPost.uid!, completed: {
+            guard let userID = newPost.uid else { return }
+            self.fetchUser(uid: userID, completed: {
                 // append the new Post and Reload after the user
                 // has been cached
                 self.posts.append(newPost)
