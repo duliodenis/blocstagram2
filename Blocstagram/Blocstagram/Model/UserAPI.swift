@@ -8,11 +8,14 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 
 class UserAPI {
     
     var REF_USERS = FIRDatabase.database().reference().child("users")
+    var CURRENT_USER = FIRAuth.auth()?.currentUser
+    var CURRENT_USER_ID = FIRAuth.auth()?.currentUser?.uid
     
     func observeUser(withID uid:String, completion: @escaping (User) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value, with: { snapshot in

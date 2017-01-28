@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -42,6 +43,11 @@ class HomeTableViewCell: UITableViewCell {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCommentImageViewTap))
         commentImageView.addGestureRecognizer(tapGesture)
         commentImageView.isUserInteractionEnabled = true
+        
+        // add a tap gesture to the like image for users to like a post
+        let likeTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleLikeTap))
+        likeImageView.addGestureRecognizer(likeTapGesture)
+        likeImageView.isUserInteractionEnabled = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -52,6 +58,17 @@ class HomeTableViewCell: UITableViewCell {
         captionLabel.text = post?.caption
         if let photoURL = post?.photoURL {
             postImageView.sd_setImage(with: URL(string: photoURL))
+        }
+        
+        // check to see if this post is liked
+        if let currentUserID = API.User.CURRENT_USER_ID {
+            API.User.REF_USERS.child(currentUserID).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: { snapshot in
+                if let _ = snapshot.value as? NSNull {
+                    self.likeImageView.image = UIImage(named: "like")
+                } else {
+                    self.likeImageView.image = UIImage(named: "likeSelected")
+                }
+            })
         }
     }
     
@@ -75,6 +92,23 @@ class HomeTableViewCell: UITableViewCell {
     func handleCommentImageViewTap() {
         if let id = post?.id {
             homeVC?.performSegue(withIdentifier: "CommentSegue", sender: id)
+        }
+    }
+    
+    
+    // MARK: - Like Tap Handler
+    
+    func handleLikeTap() {
+        if let currentUserID = API.User.CURRENT_USER_ID {
+            API.User.REF_USERS.child(currentUserID).child("likes").child(post!.id!).observeSingleEvent(of: .value, with: { snapshot in
+                if let _ = snapshot.value as? NSNull {
+                    API.User.REF_USERS.child(currentUserID).child("likes").child(self.post!.id!).setValue(true)
+                    self.likeImageView.image = UIImage(named: "likeSelected")
+                } else {
+                    API.User.REF_USERS.child(currentUserID).child("likes").child(self.post!.id!).removeValue()
+                    self.likeImageView.image = UIImage(named: "like")
+                }
+            })
         }
     }
 
