@@ -38,6 +38,7 @@ class HomeTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         nameLabel.text = ""
         captionLabel.text = ""
         
@@ -58,12 +59,18 @@ class HomeTableViewCell: UITableViewCell {
     
     func updateView() {
         captionLabel.text = post?.caption
+        
         if let photoURL = post?.photoURL {
             postImageView.sd_setImage(with: URL(string: photoURL))
         }
         
-        // check to see if this post is liked
-        updateLike(post: post!)
+        // get the latest post
+        API.Post.REF_POSTS.child(post!.id!).observeSingleEvent(of: .value, with: { postSnapshot in
+            if let postDictionary = postSnapshot.value as? [String:Any] {
+                let post = Post.transformPost(postDictionary: postDictionary, key: postSnapshot.key)
+                self.updateLike(post: post)
+            }
+        })
         
         // observe like field to update if others like this post
         API.Post.REF_POSTS.child(post!.id!).observe(.childChanged, with: { snapshot in
