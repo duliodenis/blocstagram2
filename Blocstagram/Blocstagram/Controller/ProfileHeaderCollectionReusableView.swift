@@ -9,5 +9,15 @@
 import UIKit
 
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
-        
+    
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    func updateView() {
+        API.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: { snapshot in
+            print(snapshot)
+        })
+    }
+    
 }
