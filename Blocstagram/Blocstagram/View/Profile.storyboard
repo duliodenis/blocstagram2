@@ -125,6 +125,7 @@
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="100" id="1uv-qs-Fdp"/>
                                                 <constraint firstItem="xT8-j1-GnX" firstAttribute="top" secondItem="8y2-Db-spD" secondAttribute="top" id="HZl-gw-EYm"/>
@@ -152,7 +153,10 @@
                                         <constraint firstItem="RRC-MJ-kLW" firstAttribute="leading" secondItem="Cdz-Zu-gVQ" secondAttribute="leading" constant="15" id="gti-uk-0Rh"/>
                                     </constraints>
                                     <connections>
+                                        <outlet property="followersCountLabel" destination="AD3-G0-71a" id="gRs-Jn-vWa"/>
+                                        <outlet property="followingCountLabel" destination="M7Y-ug-tcR" id="rlM-Bl-4NB"/>
                                         <outlet property="nameLabel" destination="h98-uY-ne9" id="OTr-lL-Paa"/>
+                                        <outlet property="postCountLabel" destination="y7X-8C-pmG" id="k3W-FZ-d43"/>
                                         <outlet property="profileImageView" destination="RRC-MJ-kLW" id="AaA-YC-I3y"/>
                                     </connections>
                                 </collectionReusableView>
