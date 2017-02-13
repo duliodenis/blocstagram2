@@ -16,20 +16,18 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followingCountLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     
+    var user: User? {
+        didSet {
+            updateView()
+        }
+    }
+    
     func updateView() {
-        API.User.REF_CURRENT_USER?.observeSingleEvent(of: .value, with: { snapshot in
-            print(snapshot)
-            
-            if let userDictionary = snapshot.value as? [String: Any] {
-                let user = User.transformUser(postDictionary: userDictionary)
-                
-                self.nameLabel.text = user.username
-                
-                if let photoURL = user.profileImageURL {
-                    self.profileImageView.sd_setImage(with: URL(string: photoURL))
-                }
-            }
-        })
+        self.nameLabel.text = user?.username
+        
+        if let photoURL = user?.profileImageURL {
+            self.profileImageView.sd_setImage(with: URL(string: photoURL))
+        }
     }
     
 }

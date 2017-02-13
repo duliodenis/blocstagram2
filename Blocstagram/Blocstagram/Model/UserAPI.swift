@@ -24,6 +24,19 @@ class UserAPI {
         return REF_USERS.child(currentUser.uid)
     }
     
+    func observeCurrentUser(completion: @escaping (User) -> Void) {
+        guard let currentUser = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        
+        REF_USERS.child(currentUser.uid).observeSingleEvent(of: .value, with: { snapshot in
+            if let postDictionary = snapshot.value as? [String: Any] {
+                let user = User.transformUser(postDictionary: postDictionary)
+                completion(user)
+            }
+        })
+    }
+    
     func observeUser(withID uid:String, completion: @escaping (User) -> Void) {
         REF_USERS.child(uid).observeSingleEvent(of: .value, with: { snapshot in
             if let postDictionary = snapshot.value as? [String: Any] {
