@@ -42,6 +42,7 @@
 		51E009471E2599C000D37151 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E009461E2599C000D37151 /* AuthService.swift */; };
 		6C7FEB661E417D1700747494 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7FEB651E417D1700747494 /* ProfileHeaderCollectionReusableView.swift */; };
 		AAF13790359D07ECD17066C4 /* Pods_Blocstagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94062A553C35D5EF531075D5 /* Pods_Blocstagram.framework */; };
+		E17E4A961E68EB9E0072045C /* UserPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17E4A951E68EB9E0072045C /* UserPostAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		6C7FEB651E417D1700747494 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderCollectionReusableView.swift; path = Controller/ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		94062A553C35D5EF531075D5 /* Pods_Blocstagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blocstagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE6AEA4F5F395C9DB7903A99 /* Pods-Blocstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blocstagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blocstagram/Pods-Blocstagram.debug.xcconfig"; sourceTree = "<group>"; };
+		E17E4A951E68EB9E0072045C /* UserPostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPostAPI.swift; path = Model/UserPostAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				513D77791E37B558000224DC /* UserAPI.swift */,
 				513D777D1E37B9C9000224DC /* CommentAPI.swift */,
 				513D777F1E3816AF000224DC /* PostCommentAPI.swift */,
+				E17E4A951E68EB9E0072045C /* UserPostAPI.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				516C65B71E1981C100547A9B /* SignUpViewController.swift in Sources */,
 				516C65B51E196E4B00547A9B /* SignInViewController.swift in Sources */,
 				513D77781E37B23A000224DC /* PostAPI.swift in Sources */,
+				E17E4A961E68EB9E0072045C /* UserPostAPI.swift in Sources */,
 				513D777A1E37B558000224DC /* UserAPI.swift in Sources */,
 				514DC8E41E2E96E5001CD672 /* HomeTableViewCell.swift in Sources */,
 				516C65A11E19667000547A9B /* AppDelegate.swift in Sources */,
