@@ -137,6 +137,16 @@ class CameraViewController: UIViewController {
                 return
             }
             
+            // associate the user and post
+            let myPostReference = API.UserPost.REF_USER_POSTS.child(currentUserID).child(newPostID)
+            
+            myPostReference.setValue("true", withCompletionBlock: { (error, dbRef) in
+                if error != nil {
+                    ProgressHUD.showError(error?.localizedDescription)
+                    return
+                }
+            })
+            
             ProgressHUD.showSuccess("Photo shared")
             
             self.clearInputs()

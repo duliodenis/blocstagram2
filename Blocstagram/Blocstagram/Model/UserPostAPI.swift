@@ -12,6 +12,6 @@ import Firebase
 
 class UserPostAPI {
     
-    var REF_POST_COMMENTS = FIRDatabase.database().reference().child("user-posts")
+    var REF_USER_POSTS = FIRDatabase.database().reference().child("user-posts")
 
 }
