@@ -25,19 +25,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fgr-j2-Ac9">
-                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="itemSize" width="105" height="105"/>
                                     <size key="headerReferenceSize" width="50" height="223"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="Znk-rc-kbu">
-                                        <rect key="frame" x="0.0" y="223" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCollectionViewCell" id="Znk-rc-kbu" customClass="PhotoCollectionViewCell" customModule="Blocstagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="223" width="105" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-io-WZE">
+                                                    <rect key="frame" x="0.0" y="0.0" width="105" height="105"/>
+                                                </imageView>
+                                            </subviews>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="gg5-io-WZE" secondAttribute="trailing" id="3eL-EL-ljU"/>
+                                            <constraint firstAttribute="bottom" secondItem="gg5-io-WZE" secondAttribute="bottom" id="IOB-sc-ZR9"/>
+                                            <constraint firstItem="gg5-io-WZE" firstAttribute="top" secondItem="Znk-rc-kbu" secondAttribute="top" id="Q58-g9-jZZ"/>
+                                            <constraint firstItem="gg5-io-WZE" firstAttribute="leading" secondItem="Znk-rc-kbu" secondAttribute="leading" id="oX8-q3-Ojm"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="photoView" destination="gg5-io-WZE" id="9f7-Tl-aea"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileHeaderCollectionReusableView" id="Cdz-Zu-gVQ" customClass="ProfileHeaderCollectionReusableView" customModule="Blocstagram" customModuleProvider="target">
