@@ -7,16 +7,20 @@
 //
 
 import UIKit
+// TODO: Refactor Model functionality out of the VC
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var user: User!
+    var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         fetchUser()
+        fetchMyPosts()
     }
     
     func fetchUser() {
@@ -26,6 +30,19 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    func fetchMyPosts() {
+        guard let currentUser = FIRAuth.auth()?.currentUser else {
+            return
+        }
+        
+        API.UserPost.REF_USER_POSTS.child(currentUser.uid).observe(.childAdded, with: { snapshot in
+            API.Post.observePost(withID: snapshot.key, completion: {
+                post in
+                self.posts.append(post)
+                self.collectionView.reloadData()
+            })
+        })
+    }
 }
 
 
