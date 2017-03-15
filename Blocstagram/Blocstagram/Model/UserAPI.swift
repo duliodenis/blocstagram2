@@ -14,7 +14,14 @@ import FirebaseAuth
 class UserAPI {
     
     var REF_USERS = FIRDatabase.database().reference().child("users")
-    var CURRENT_USER = FIRAuth.auth()?.currentUser
+
+    var CURRENT_USER: FIRUser? {
+        if let currentUser = FIRAuth.auth()?.currentUser {
+            return currentUser
+        }
+        return nil
+    }
+    
     var CURRENT_USER_ID = FIRAuth.auth()?.currentUser?.uid
     
     var REF_CURRENT_USER: FIRDatabaseReference? {

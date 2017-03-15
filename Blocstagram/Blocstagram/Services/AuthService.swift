@@ -56,6 +56,17 @@ class AuthService {
     }
     
     
+    static func signOut(onSuccess: @escaping () -> Void, onError: @escaping (_ errorMessage: String?) -> Void) {
+        // Log out user from Firebase
+        do {
+            try FIRAuth.auth()?.signOut()
+            onSuccess()
+        } catch let signOutError {
+            onError(signOutError.localizedDescription)
+        }
+    }
+    
+    
     // MARK: - Firebase Saving Methods
     
     static func setUserInformation(profileImageURL: String, username: String, email: String, uid: String, onSuccess: @escaping () -> Void) {

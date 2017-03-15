@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
 
 
 class CommentViewController: UIViewController {
@@ -83,12 +81,12 @@ class CommentViewController: UIViewController {
     // MARK: - Firebase Save Operation
     
     @IBAction func send(_ sender: Any) {
-        let ref = FIRDatabase.database().reference()
-        let commentsReference = ref.child("comments")
+        let commentsReference = API.Comment.REF_COMMENTS
         let newCommentID = commentsReference.childByAutoId().key
         
         let newCommentsReference = commentsReference.child(newCommentID)
-        guard let currentUserID = FIRAuth.auth()?.currentUser?.uid else { return }
+        guard let currentUser = API.User.CURRENT_USER else { return }
+        let currentUserID = currentUser.uid
         
         newCommentsReference.setValue(["uid": currentUserID, "commentText": commentTextField.text!]) { (error, reference) in
             if error != nil {
@@ -96,7 +94,7 @@ class CommentViewController: UIViewController {
                 return
             }
             
-            let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postID).child(newCommentID)
+            let postCommentRef = API.PostComment.REF_POST_COMMENTS.child(self.postID).child(newCommentID)
             postCommentRef.setValue("true", withCompletionBlock: { (error, dbRef) in
                 if error != nil {
                     ProgressHUD.showError(error?.localizedDescription)
@@ -113,7 +111,7 @@ class CommentViewController: UIViewController {
     // MARK: - Load Comments from Firebase
     
     func loadComments() {
-        let postCommentRef = FIRDatabase.database().reference().child("post-comments").child(self.postID)
+        let postCommentRef = API.PostComment.REF_POST_COMMENTS.child(self.postID)
         postCommentRef.observe(.childAdded) { snapshot in
             API.Comment.observeComments(withPostID: snapshot.key, completion: { (newComment) in
                 self.fetchUser(uid: newComment.uid!, completed: {
